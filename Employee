@@ -1,0 +1,59 @@
+/*
+ * Employee.java
+ */
+
+/**
+ *
+ * @author D. Vijay Kumar
+ */
+public class Employee {
+    
+  // Name your member variables as follows: firstName, lastName and monthlySalary
+	private String firstName, lastName;
+	private double monthlySalary;
+    
+	// Implement a three-parameter constructor that takes, in order: the first name, last name and monthly salary
+	public Employee (String fName, String lName, double mSalary)
+	{
+		firstName = fName;
+		lastName = lName;
+		setMonthlySalary(mSalary);
+	}
+	// Your mutator methods should be named following the pattern setVariableName. e.g.: setFirstName
+	// Your accessor methods should be named following the pattern getVariableName. e.g.: getFirstName
+	
+	public void setFirstName(String fname)
+	{
+		firstName = fname;
+	}
+
+	public String getFirstName()
+	{
+		return firstName; 
+	}
+	
+	public void setLastName(String lname)
+	{
+		lastName = lname;
+	}
+	
+	public String getLastName()
+	{
+		return lastName;
+	}
+	
+	public void setMonthlySalary(double mSalary)
+	{	
+		if (mSalary > 0)
+		monthlySalary = mSalary;
+	}
+	public double getMonthlySalary()
+	{
+		return monthlySalary;
+	}
+	public double raiseSalary(double mSalary)
+	{
+		return (1.1 * mSalary)*12;
+	}
+	
+}
