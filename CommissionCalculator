@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+//calculate sales commission
+public class CommissionCalculator {
+  private double commission;
+	double array[] = {0, 239.99, 129.75, 99.95, 350.89};
+	
+	public void menuOutputEachTime()
+	{
+		System.out.println("Item" + "\t"+"Value");
+		for (int i=1; i<=4; i++)
+		{
+			System.out.println(i+"\t"+ "$"+array[i]);
+		}
+	}
+	
+	public final double noSales()
+	{
+		return 200;
+	}
+	
+	public double someSales(double itemN)
+	{
+		commission = (itemN*0.09) +200;
+		return commission;
+	}
+	public double currentCompensationRunningTotal(double t)
+	{
+		return 200 + t;
+	}
+public static void main(String[] args)
+{
+	Scanner input = new Scanner(System.in);
+	CommissionCalculator commission = new CommissionCalculator();
+	commission.menuOutputEachTime();
+	System.out.printf("Current compensation: $%.2f\n", commission.noSales());
+	System.out.print("Please select an item from the list above (or enter 0 to exit): ");
+	
+	double item=0;
+	double total =0;
+	while(input.hasNextInt())
+	{
+		
+		int itemNumber = input.nextInt();
+		if (itemNumber!=0)
+		{
+			try
+			{
+				item = commission.array[itemNumber];
+				total += (item*0.09);
+				commission.menuOutputEachTime();
+				System.out.printf("Current Compensation: $%.2f\n",commission.currentCompensationRunningTotal(total));
+				System.out.print("Please select an item from the list above (or enter 0 to exit): ");
+			}
+			catch (Exception e)
+			{
+				System.out.println("ERROR: Invalid Input!");
+				commission.menuOutputEachTime();
+				System.out.printf("Current Compensation: $%.2f\n",commission.someSales(item));
+				System.out.print("Please select an item from the list above (or enter 0 to exit): ");
+			}
+		}else
+		{
+			System.out.printf("Total earnings: $%.2f",commission.currentCompensationRunningTotal(total));
+			break;
+		}
+}
+	input.close();
+}
+}
